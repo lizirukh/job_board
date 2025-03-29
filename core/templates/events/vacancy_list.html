@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} Find suitable work here! {% endblock %}
+
+{% block content %}
+    {% include 'paginator.html' %}
+    <div class="container">
+        <div class="row">
+            <table class="table table-hover">
+                <tr valign="middle">
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Company
+                    </th>
+                    <th>
+                        Publishing Date
+                    </th>
+                    <th>
+                        Deadline
+                    </th>
+                </tr>
+                {% for vacancy in vacancies %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'vacancy_detail' vacancy.id %}"
+                               style="text-decoration: none; color: inherit;">
+                                {{ vacancy.title }}
+                            </a>
+
+                        </td>
+                        <td>{{ vacancy.company }}</td>
+                        <td>{{ vacancy.was_published }}</td>
+                        <td>{{ vacancy.deadline }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

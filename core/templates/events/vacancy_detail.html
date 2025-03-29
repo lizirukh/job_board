@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ vacancy.title }} {% endblock %}
+
+{% block content %}
+    <div class="main-container">
+
+        <div class="event-information">
+
+            <div class="card">
+                <h5 class="card-header">{{ vacancy.company }}</h5>
+                <div class="card-body">
+                    <h5 class="card-title">{{ vacancy.title }}</h5>
+                    <p class="card-text"><b>Location: </b> {{ vacancy.location }}</p>
+                    <p class="card-text"><b>Was published: </b> {{ vacancy.was_published }}</p>
+                    <p class="card-text"><b>Apply until: </b> {{ vacancy.deadline }}</p>
+                    <p class="card-text">{{ vacancy.description }}</p>
+                    <a href="{% url 'vacancy_list' %}" class="btn btn-danger">Cancel</a>
+                    <a href="{% url 'apply_vacancy' vacancy.id %}" class="btn btn-primary">Apply Now!</a>
+                </div>
+            </div>
+
+            {#            <h5 class="card-title"></h5>#}
+
+            {#        <p class="card-text"><b>Category: </b> {{ vacancy.category}}</p>#}
+
+
+        </div>
+    </div>
+{% endblock %}
